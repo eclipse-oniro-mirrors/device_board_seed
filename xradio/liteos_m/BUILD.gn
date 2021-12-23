@@ -1,0 +1,10 @@
+
+
+import("//kernel/liteos_m/liteos.gni")
+
+module_name = get_path_info(rebase_path("."), "name")
+kernel_module(module_name) {
+  if (defined(LOSCFG_DRIVERS_HDF)) {
+     deps = [ "$product_path/hdf_config:hdf_hcs" ]
+  }
+}
