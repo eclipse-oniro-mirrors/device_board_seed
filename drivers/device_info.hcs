@@ -1,0 +1,56 @@
+root {
+    module = "xradio,xr806";
+    device_info {
+        match_attr = "hdf_manager";
+        template host {
+            hostName = "";
+            priority = 100;
+            template device {
+                template deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "";
+                    serviceName = "";
+                    deviceMatchAttr = "";
+                }
+            }
+        }
+        platform :: host {
+            hostName = "platform_host";
+            priority = 50;
+            device_gpio :: device {
+                gpio0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "XRADIO_GPIO";
+                    serviceName = "HDF_PLATFORM_GPIO";
+                    deviceMatchAttr = "gpio_config";
+                }
+            }
+            device_i2c :: device {
+                i2c_manager :: deviceNode {
+                    policy = 2;
+                    priority = 50;
+                    moduleName = "HDF_PLATFORM_I2C_MANAGER";
+                    serviceName = "HDF_PLATFORM_I2C_MANAGER";
+                }
+                i2c0 :: deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    moduleName = "XRADIO_I2C";
+                    serviceName = "";
+                    deviceMatchAttr = "i2c0_config";
+                }
+                i2c1 :: deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    moduleName = "XRADIO_I2C";
+                    serviceName = "";
+                    deviceMatchAttr = "i2c1_config";
+                }
+            }
+        }
+    }
+}

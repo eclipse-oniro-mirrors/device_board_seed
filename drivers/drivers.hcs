@@ -1,0 +1,53 @@
+#include "device_info.hcs"
+root {
+    platform {
+        gpio_config {
+            match_attr = "gpio_config";
+            /*
+                格式说明：
+                pinport : 0portA，1portB
+                pinnum : 根据实际选择
+                driving ：驱动能力范围 [0,1,2,3]
+                mode ：0输入，1输出，6中断，7禁止使用
+                pull : 0悬空，1上拉，2下拉
+            */
+           pinport = 0;
+           pinnum = 21;
+           driving = 1;
+           mode = 1;
+           pull = 0;
+        }
+        i2c_config {
+            i2c0 {
+                /*
+                    格式说明：
+                    addrMode : 0地址占用7位，1地址占用10位
+                    clockFreq : 时钟波特率
+                */
+                match_attr = "i2c0_config";
+                IIC_ID = 0;
+                addrMode = 0;
+                clockFreq = 200000;
+            }
+        }
+        adc_config {
+            adc0 {
+                /*
+                    格式说明：
+                    work_clk : 0高速时钟，1低速时钟
+                    delay : 首次覆盖延迟
+                    vref_mode : 0内部参考，输入范围0~1.4，1内部参考，输入范围0~2.5，2VDD_IO作为参考电压
+                    mode : 0单次采样，1单次循环采样，2连续采样，3多通道采样
+                    irq_mode : 0直接获取，1使用中断获取
+                */
+                match_attr = "adc0_config";
+                work_clk = 0;
+                delay = 10;
+                suspend_bypass = 0;
+                vref_mode = 1;
+                mode = 2;
+                irq_mode = 0;
+            }
+        }
+    }
+}

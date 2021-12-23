@@ -1,39 +1,34 @@
-# device_board_allwinner_xr806
+# XR806_OpenHarmony开发板
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+- [芯片介绍](#芯片介绍)
+- [开发板介绍](#开发板介绍)
+- [应用案例](#应用案例)
+- [快速入门](#快速入门)
+- [更多信息](#更多信息)
 
-#### 软件架构
-软件架构说明
+## 芯片介绍
 
+XR806是全志科技旗下子公司广州芯之联研发设计的一款支持WiFi和BLE的高集成度无线MCU芯片，支持**OpenHarmony轻量设置系统**。具有集成度高、硬件设计简单、BOM成本低、安全可靠等优点。可广泛满足 **智能家居、智慧楼宇、工业互联、儿童玩具、电子竞赛、极客DIY** 等领域的无线连接需求。
 
-#### 安装教程
+## 开发板介绍
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 开发板概述
 
-#### 使用说明
+XR806_OpenHarmony开发板是基于XR806芯片设计开发的参考评估，板身集成了XR806芯片、WiFi/BT双天线、供电系统、按钮及LED等，并引出了所有可用引脚，可供开发者进行方案评估、DIY或小规模产品研发使用。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 开发板详情
 
-#### 参与贡献
+![image-20211029160710797](xr806/doc/assets/img/image-readme-main.png)
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 应用案例
 
+XR806广泛应用于家电、安防等产品，如以下案例。
 
-#### 特技
+1. 智能家电，如空凋、冰箱、洗衣机，通过无线模组，通过家电<->服务器<->手机的连接关系，实现远程控制。
+2. IPC。即网络摄像头，网络编码模块将模拟摄像机采集到的模拟视频信号编码压缩成数字信号，从而可以直接接入网络交换及路由设备。
+3. 智能门锁。XR806特有的超低功耗技术，保证了稳定连接的前提下也保证了续航。
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 快速入门
+
+入门文档：[device/xradio/xr806/doc](./xr806/doc)
+

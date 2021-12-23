@@ -1,0 +1,8 @@
+
+
+
+# config PROJECT
+# 	string "Projects Selected"
+# 	default ""
+# 	help
+# 		[test/driver_test demo/wlan_demo examples/uart ...] Projects Selsected
