@@ -18,7 +18,7 @@ XR806_OpenHarmony开发板是基于XR806芯片设计开发的参考评估，板�
 
 #### 模块框图
 
-<img src="../assets/img/模块框图.png" alt="模块框图" style="zoom:50%;" />
+<img src="docs/img/模块框图.png" alt="模块框图" style="zoom:50%;" />
 
 #### 参数规格
 
