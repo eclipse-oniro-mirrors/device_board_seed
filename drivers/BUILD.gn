@@ -17,7 +17,6 @@ module_name = get_path_info(rebase_path("."), "name")
 hdf_driver(module_name) {
   hcs_sources = ["${module_name}.hcs"]
   visibility += [
-    "$device_path",
     ".",
   ]
 }
