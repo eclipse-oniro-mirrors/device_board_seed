@@ -18,7 +18,7 @@ XR806_OpenHarmony开发板是基于XR806芯片设计开发的参考评估，板�
 
 #### 开发板外观图片
 
-<img src="docs/img/image-readme-main.png" alt="mainview" style="zoom:50%;" />
+<img src="D:\1--git\XR806\device_board\device_board_allwinner_xr806\docs\img\image-readme-main.png" alt="mainview" style="zoom:50%;" />
 
 #### 参数规格
 
@@ -159,7 +159,7 @@ hb build -f #编译命令
 
 ### 烧录软件界面
 
-![主页面](./docs/img/image-flash-mainView.png)
+![主页面](D:\1--git\XR806\device_board\device_board_allwinner_xr806\docs\img\image-flash-mainView.png)
 
 ### 操作步骤
 
@@ -169,7 +169,7 @@ hb build -f #编译命令
 4. 固件选择：点击“选择固件”按钮选择需要烧录的固件文件（xr_system.img），固件信息栏会显示出当前固件的详细信息。另外，通过拖拽方式将固件直接拖入工具界面也可以达到同样的效果。
 5. 开启一键烧录功能：点击“设置”按钮调出设置界面，如下图勾选“硬件复位烧写模式”
 
-![烧录设置](./docs/img/image-flash-setView.png)
+![烧录设置](D:\1--git\XR806\device_board\device_board_allwinner_xr806\docs\img\image-flash-setView.png)
 
 6. 启动烧录：点击“升级固件”按钮启动固件烧录。烧录状态栏显示当前选定串口对应设备的烧录进度和状态。当烧录成功时，进度条会达到100%的进度并显示为绿色；当烧录失败时，进度条显示为红色并报告错误。
 
