@@ -843,7 +843,28 @@
 			status			= "okay";
 		};
 
-		/* audio dirver module -> audiocodec*/
+		/* audio driver adapter -> harmony ADM */
+		/* audio dirver module -> audio codec */
+		codec:codec@0x05096000 {
+			lineout-vol	= <31>;
+			avcc-supply	= <&reg_aldo2>;
+			status		= "okay";
+		};
+
+		/* audio dirver module -> audio hub */
+		ahub:ahub@0x05097000 {
+			apb-num		= <0>;
+			tdm-num		= <0>;
+			tx-pin		= <0>;
+			rx-pin		= <0>;
+			pinctrl-used;
+			pinctrl-names	= "default","sleep";
+			pinctrl-0	= <&ahub_daudio0_pins_a>;
+			pinctrl-1	= <&ahub_daudio0_pins_b>;
+			status		= "okay";
+		};
+
+/*------------------------------------------------------------------------------
 		codec:codec@0x05096000 {
 			adcdrc_cfg  = <0x00>;
 			adchpf_cfg  = <0x00>;
@@ -853,7 +874,6 @@
 			linein_gain = <0x03>;
 			digital_vol = <0x00>;
 			lineout_vol = <0x1a>;
-			/* gpio-spk */
 			gpio-spk = <&pio PH 7 1 1 1 1>;
 			pa_ctl_level   = <0x00>;
 			pa_msleep_time = <0x78>;
@@ -870,7 +890,6 @@
 			status = "okay";
 		};
 
-		/* audio dirver module -> spdif*/
 		spdif:spdif-controller@0x05093000{
 			pinctrl-names = "default","sleep";
 			pinctrl-0 = <&spdif_pins_a>;
@@ -882,7 +901,6 @@
 			status = "okay";
 		};
 
-		/* audio dirver module -> dmic*/
 		dmic:dmic-controller@0x05095000{
 			pinctrl-names = "default","sleep";
 			pinctrl-0 = <&dmic_pins_a>;
@@ -894,7 +912,6 @@
 			status = "okay";
 		};
 
-		/* audio dirver module -> ahub*/
 		ahub_codec:ahub_codec@0x05097000{
 			status = "okay";
 		};
@@ -965,7 +982,6 @@
 		};
 
 		snddaudio0:sound@3{
-			/* ac107-codec throught daudio0*/
 			sunxi,snddaudio-codec = "ac107.3-0036";
 			sunxi,snddaudio-codec-dai = "ac107-pcm0";
 			daudio_master		= <0x04>;
@@ -991,8 +1007,6 @@
 		};
 
 		snddaudio3:sound@6{
-			/* sunxi,snddaudio-codec = "snd-soc-dummy"; */
-			/* sunxi,snddaudio-codec-dai = "snd-soc-dummy-dai"; */
 			daudio_master 		= <0x04>;
 			audio_format 		= <0x01>;
 			signal_inversion 	= <0x01>;
@@ -1002,6 +1016,8 @@
 		sndahub:sound@7{
 			status = "okay";
 		};
+------------------------------------------------------------------------------*/
+
 /*--------------------------------------------------------------------------------
 vin (video input modules) configuration
 vind(x)_used: 0:disable 1:enable, main node for vin
