@@ -857,10 +857,10 @@
 			tdm-num		= <0>;
 			tx-pin		= <0>;
 			rx-pin		= <0>;
-			pinctrl-used;
+			/*pinctrl-used;
 			pinctrl-names	= "default","sleep";
 			pinctrl-0	= <&ahub_daudio0_pins_a>;
-			pinctrl-1	= <&ahub_daudio0_pins_b>;
+			pinctrl-1	= <&ahub_daudio0_pins_b>;*/
 			status		= "okay";
 		};
 
