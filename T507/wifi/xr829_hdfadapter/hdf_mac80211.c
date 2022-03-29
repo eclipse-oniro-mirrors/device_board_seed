@@ -183,13 +183,16 @@ static int32_t WalAssociate(void)
 	struct cfg80211_assoc_request assoc_params = { 0 };
 
     HDF_LOGE("%s: start ...!", __func__);
-	/*HDF_LOGV("%s: centerFreq:%u ssidLen:%u ssid:%s", __func__, global_param->centerFreq, global_param->ssidLen, global_param->ssid);
-	HDF_LOGV("%s: bssid:%02x:%02x:%02x:%02x:%02x:%02x!", __func__,
-        global_param->bssid[0], global_param->bssid[1], global_param->bssid[2], 
-        global_param->bssid[3], global_param->bssid[4], global_param->bssid[5]);
-	HDF_LOGV("%s: global_param->ie:%s,  global_param->ie_len %d", __func__, global_param->ie, global_param->ie_len);*/
 
-	if (global_param->centerFreq != WLAN_FREQ_NOT_SPECFIED) {
+    /*
+      HDF_LOGV("%s: centerFreq:%u ssidLen:%u ssid:%s", __func__, global_param->centerFreq, global_param->ssidLen, global_param->ssid);
+      HDF_LOGV("%s: bssid:%02x:%02x:%02x:%02x:%02x:%02x!", __func__,
+        global_param->bssid[0], global_param->bssid[1], global_param->bssid[2],
+        global_param->bssid[3], global_param->bssid[4], global_param->bssid[5]);
+      HDF_LOGV("%s: global_param->ie:%s,  global_param->ie_len %d", __func__, global_param->ie, global_param->ie_len);
+     */
+
+      if (global_param->centerFreq != WLAN_FREQ_NOT_SPECFIED) {
 		channel = WalGetChannel(wiphy, global_param->centerFreq);
 		if ((channel == NULL) || (channel->flags & WIFI_CHAN_DISABLED)) {
 			HDF_LOGE("%s:illegal channel.flags=%u", __func__,
@@ -202,7 +205,7 @@ static int32_t WalAssociate(void)
 				   IEEE80211_BSS_TYPE_ESS,
 				   IEEE80211_PRIVACY_ANY);
 
-	assoc_params.ie = global_param->ie;
+    assoc_params.ie = global_param->ie;
     assoc_params.ie_len = global_param->ie_len;
     ret = memcpy_s(&assoc_params.crypto, sizeof(assoc_params.crypto), &global_param->crypto, sizeof(global_param->crypto));
     if (ret != 0) {
@@ -246,10 +249,12 @@ void inform_bss_frame(struct ieee80211_channel *channel, int32_t signal, int16_t
     hdfchannel.channelId = channel->hw_value;
     hdfchannel.centerFreq = channel->center_freq;
 
-    /*HDF_LOGV("%s: hdfchannel signal:%d flags:%d--channelId:%d--centerFreq:%d--dstMac:%02x:%02x:%02x:%02x:%02x:%02x!",
-        __func__, bssInfo.signal, hdfchannel.flags, hdfchannel.channelId, hdfchannel.centerFreq, 
-        bssInfo.mgmt->bssid[0], bssInfo.mgmt->bssid[1], bssInfo.mgmt->bssid[2], 
-        bssInfo.mgmt->bssid[3], bssInfo.mgmt->bssid[4], bssInfo.mgmt->bssid[5]);*/
+    /*
+      HDF_LOGV("%s: hdfchannel signal:%d flags:%d--channelId:%d--centerFreq:%d--dstMac:%02x:%02x:%02x:%02x:%02x:%02x!",
+        __func__, bssInfo.signal, hdfchannel.flags, hdfchannel.channelId, hdfchannel.centerFreq,
+        bssInfo.mgmt->bssid[0], bssInfo.mgmt->bssid[1], bssInfo.mgmt->bssid[2],
+        bssInfo.mgmt->bssid[3], bssInfo.mgmt->bssid[4], bssInfo.mgmt->bssid[5]);
+     */
 
     retVal = HdfWifiEventInformBssFrame(netDev, &hdfchannel, &bssInfo);
     if (retVal < 0) {
@@ -265,15 +270,17 @@ void inform_connect_result(uint8_t *bssid, uint8_t *rspIe, uint8_t *reqIe, uint3
     struct ConnetResult connResult;
 
    /* if (netDev == NULL || bssid == NULL || rspIe == NULL || reqIe == NULL) {
-        HDF_LOGE("%s: netDev / bssid / rspIe / reqIe null!", __func__);
+         HDF_LOGE("%s: netDev / bssid / rspIe / reqIe null!", __func__);
         return;
-    }*/
-	if (netDev == NULL || bssid == NULL || rspIe == NULL) {
+     }
+    */
+
+    if (netDev == NULL || bssid == NULL || rspIe == NULL) {
         HDF_LOGE("%s: netDev / bssid / rspIe null!", __func__);
         return;
     }
 
-    memcpy(&connResult.bssid[0], bssid, HDF_ETHER_ADDR_LEN);
+    memcpy_s(&connResult.bssid[0], HDF_ETHER_ADDR_LEN, bssid, HDF_ETHER_ADDR_LEN);
     HDF_LOGE("%s: connResult:%02x:%02x:%02x:%02x:%02x:%02x\n", __func__, 
         connResult.bssid[0], connResult.bssid[1], connResult.bssid[2], connResult.bssid[3], connResult.bssid[4], connResult.bssid[5]);
 
@@ -432,7 +439,7 @@ int32_t WalSetMacAddr(NetDevice *netDev, uint8_t *mac, uint8_t len)
         HDF_LOGE("ADDR=%02x:%02x:%02x:%02x:%02x:%02x\n",
             mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
-        sprintf(addr_mac, "%02x:%02x:%02x:%02x:%02x:%02x\n",
+        sprintf_s(addr_mac, ETH_ADDR_LEN, "%02x:%02x:%02x:%02x:%02x:%02x\n",
 	    mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
         retVal = set_wifi_custom_mac_address(addr_mac, len);
 	} else {
@@ -753,7 +760,7 @@ static int32_t WalAuthenticate(NetDevice *netDev, WlanConnectParams *param)
         return HDF_FAILURE;
     }
 
-	auth_params.ie = param->ie;
+    auth_params.ie = param->ie;
     auth_params.ie_len = param->ieLen;
     auth_params.key = param->key;
     auth_params.auth_type = (u_int8_t)param->authType;
@@ -796,7 +803,7 @@ static int32_t WalAuthenticate(NetDevice *netDev, WlanConnectParams *param)
         return HDF_FAILURE;
     }
 	//global_param->ie = param->ie;
-    memcpy(global_param->ie, param->ie, param->ieLen);
+    memcpy_s(global_param->ie, global_param->ie_len, param->ie, param->ieLen);
     //HDF_LOGV("%s: global_param->ie:%s,  global_param->ie_len %d", __func__, global_param->ie, global_param->ie_len);
 
 	retVal = xrmac_config_ops.auth(wiphy, netdev, &auth_params);
@@ -1014,7 +1021,7 @@ int32_t WalConfigAp(NetDevice *netDev, struct WlanAPConf *apConf)
     HDF_LOGE("%s: after  iftype = %d!", __func__, netdev->ieee80211_ptr->iftype);
 
     ap_setting_info.ssid_len = apConf->ssidConf.ssidLen;
-    memcpy(&ap_ssid[0], &apConf->ssidConf.ssid[0], apConf->ssidConf.ssidLen);
+    memcpy_s(&ap_ssid[0], IEEE80211_MAX_SSID_LEN, &apConf->ssidConf.ssid[0], apConf->ssidConf.ssidLen);
 
     ap_setting_info.ssid = &ap_ssid[0];
     ap_setting_info.chandef.center_freq1 = apConf->centerFreq1;
@@ -1081,7 +1088,7 @@ int32_t WalChangeBeacon(NetDevice *netDev, struct WlanBeaconConf *param)
     (void)netDev;
     HDF_LOGE("%s: start...", __func__);
 
-    memset(&info, 0x00, sizeof(info));
+    memset_s(&info, sizeof(info), 0x00, sizeof(info));
     info.head = param->headIEs;
     info.head_len = (size_t)param->headIEsLength;
     info.tail = param->tailIEs;
