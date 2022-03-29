@@ -89,8 +89,8 @@ int32_t hdf_netdev_open(struct NetDevice *netDev)
         HDF_LOGE("%s: NULL == netDev->ieee80211Ptr", __func__);
     }
 
-	xradio_get_mac_addrs(netDev->macAddr);
-    HDF_LOGE("%s: %02x:%02x:%02x:%02x:%02x:%02x", __func__, 
+    xradio_get_mac_addrs(netDev->macAddr);
+    /* HDF_LOGE("%s: %02x:%02x:%02x:%02x:%02x:%02x", __func__, 
         netDev->macAddr[0],
         netDev->macAddr[1],
         netDev->macAddr[2],
@@ -98,6 +98,7 @@ int32_t hdf_netdev_open(struct NetDevice *netDev)
         netDev->macAddr[4],
         netDev->macAddr[5]
         );
+    */
 
     //struct wireless_dev *wdev = GET_NET_DEV_CFG80211_WIRELESS(netDev);
     gp_hdf_netDev = netDev;
@@ -220,6 +221,8 @@ void hdf_netdev_linkstatuschanged(struct NetDevice *netDev)
     (void)netDev;
 }
 
+#define WIFI_SHIFT_BIT 8
+
 ProcessingResult hdf_netdev_specialethertypeprocess(const struct NetDevice *netDev, NetBuf *buff)
 {
     //struct EtherHeader *header = NULL;
@@ -227,6 +230,7 @@ ProcessingResult hdf_netdev_specialethertypeprocess(const struct NetDevice *netD
     const struct Eapol *eapolInstance = NULL;
     int ret;
     uint16_t protocol;
+    const int pidx0 = 12, pidx1 = 13;
 
     HDF_LOGE("%s: start...", __func__);
 
@@ -236,7 +240,7 @@ ProcessingResult hdf_netdev_specialethertypeprocess(const struct NetDevice *netD
 
     //header = (struct EtherHeader *)NetBufGetAddress(buff, E_DATA_BUF);
 
-    protocol = (buff->data[12] << 8) | buff->data[13];
+    protocol = (buff->data[pidx0] << WIFI_SHIFT_BIT) | buff->data[pidx1];
     if (protocol != ETHER_TYPE_PAE) {
         HDF_LOGE("%s: return PROCESSING_CONTINUE", __func__);
         return PROCESSING_CONTINUE;

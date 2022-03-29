@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Sunxi Device Co., Ltd.
+ * Copyright (C) 2022 VYAGOO TECHNOLOGY Co., Ltd.
  *
  * HDF is dual licensed: you can use it either under the terms of
  * the GPL, or the BSD license, at your option.
