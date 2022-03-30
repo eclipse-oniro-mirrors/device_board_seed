@@ -70,6 +70,8 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filepath" name="T507/camera/src/device_manager/BUILD.gn" desc="no license heard"/>
                 <filteritem type="filepath" name="T507/camera/src/driver_adapter/BUILD.gn" desc="no license heard"/>
                 <filteritem type="filepath" name="T507/camera/src/pipeline_core/BUILD.gn" desc="no license heard"/>
+                <filteritem type="filepath" name="T507/audio/.*" desc=" GPL, or the BSD license, at your option."/>
+                <filteritem type="filepath" name="T507/wifi/.*" desc=" GPL, or the BSD license, at your option."/>
                 <filteritem type="filename" name="*.fex|*dts" desc="no license heard"/>  
             </filefilter>
             <filefilter name="copyrightPolicyFilter" desc="Filters for copyright header policies">
