@@ -1,9 +1,16 @@
 /*
  * Copyright (C) 2022 VYAGOO TECHNOLOGY Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * HDF is dual licensed: you can use it either under the terms of
- * the GPL, or the BSD license, at your option.
- * See the LICENSE file in the root of this repository for complete details.
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 #include <linux/slab.h>
@@ -1435,6 +1442,4 @@ static struct platform_driver sunxi_ahub_driver = {
 
 module_platform_driver(sunxi_ahub_driver);
 
-MODULE_AUTHOR("Dby@allwinnertech.com");
-MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("sunxi soundcard platform of ahub");
