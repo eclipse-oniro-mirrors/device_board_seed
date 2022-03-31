@@ -177,12 +177,63 @@ repo forall -c 'git lfs pull'
 
 
 
-#### 使用工具LiveSuit_V1.0.0.1烧录
-1. 下载方式：
-   https://gitee.com/vyagoo_0/seed_tools/tree/master/tools
+#### 开发板烧录
 
-2、连接好数据线和串口线；
+**注意：本文档基于T507_bearpi进行说明。**
 
-3、打开烧录软件，选择好要烧录的镜像文件；
+##### 1、获取烧写软件：
 
-4、使用类MobaXterm等工具打开串口，串口可读写的前提按住键盘键"2",然后按这样机的reset键，软件自动进入烧写模式，等待烧写成功即可。
+​	路径链接： https://gitee.com/vyagoo_0/seed_tools/tree/master/tools
+
+​	下载到本地后解压后得到如下文件：
+
+```sh
+├── LiveSuit.zip    # 烧录工具
+└── UsbDriver.zip   # 烧录工具所需驱动
+```
+
+​	解压相应压缩包，解压LiveSuit.zip并运行LiveSuit.exe如下：
+
+![LiveSuit.exe](figures/LiveSuit.png)
+
+​	点击Image选择需要升级的镜像文件
+
+##### 2、安装驱动
+
+**注意：该步骤一般在首次刷机才需要，安装成功之后就不需要再次进行该步骤。**
+
+开发板无镜像上电或者切换至 usb 升级模式时，如果 PC 端没有安装驱动，在设备管理 器中将会被识别成未知设备，按以下步骤安装 usb 驱动即可： 驱动在解压出来的的目录下：UsbDriver
+
+开发板上电开机，用 miniUSB 线连接到电脑，查看是否检测到设备(首次需要安装驱动)
+
+打开设备管理器，找到未识别设备，选择右键菜单“更新驱动”
+
+![update_driver.png](figures/update_driver.png)
+
+选择浏览计算机查找驱动
+
+![update_driver1.png](figures/update_driver1.png)
+
+进入解压出的目录：选择 UsbDriver 目录
+
+![update_driver2.png](figures/update_driver2.png)
+
+等待设备安装完成，如下：
+
+![update_driver3.png](figures/update_driver3.png)
+
+驱动安装完成，开发板切换到升级状态时，会被识别成 USB Device(VID_1f3a_PID_efe8)
+
+##### 3、刷机
+
+- 确保驱动安装后，确保机器上电并且连接好miniUSB数据线后，切换板子到升级模式即可开始烧录，切换方式如下：
+
+​		按住开发板上的**OTA按键**，然后按**RST按键**，如弹出如下弹窗说明开发板进去升级模式。
+
+- 根据需求选择**(是)**或**(否)**便开始自动刷机
+
+![flash_image.png](figures/flash_image.png)
+
+- 进度条更新，等待烧写成功即可。
+
+![flash_image_success.png](figures/flash_image_success.png)
