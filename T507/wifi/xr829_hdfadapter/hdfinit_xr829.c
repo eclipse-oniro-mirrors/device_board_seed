@@ -30,7 +30,8 @@ struct net_device *save_kernel_net = NULL;
 extern int32_t hdf_netdev_init(struct NetDevice *netDev);
 extern int32_t hdf_netdev_open(struct NetDevice *netDev);
 extern int32_t hdf_netdev_stop(struct NetDevice *netDev);
-
+extern struct net_device *GetLinuxInfByNetDevice(const struct NetDevice *netDevice);
+extern void set_krn_netdev(struct net_device *dev);
 /***********************************************************/
 /*      Function declare                                   */
 /***********************************************************/
@@ -56,6 +57,7 @@ int32_t DeinitXr829Chip(struct HdfWlanDevice *device)
 int32_t Xr829Init(struct HdfChipDriver *chipDriver, struct NetDevice *netDevice)
 {
     struct HdfWifiNetDeviceData *data = NULL;
+    struct net_device *netdev = NULL;
 
     (void)chipDriver;
     HDF_LOGE("%s: start...", __func__);
@@ -65,6 +67,14 @@ int32_t Xr829Init(struct HdfChipDriver *chipDriver, struct NetDevice *netDevice)
         HDF_LOGE("%s:para is null!", __func__);
         return HDF_FAILURE;
     }
+
+    netdev = GetLinuxInfByNetDevice(netDevice);
+    if (netdev == NULL) {
+        HDF_LOGE("%s net_device is null!", __func__);
+        return HDF_FAILURE;
+    }
+
+    set_krn_netdev(netdev);
 
     data = GetPlatformData(netDevice);
     if (data == NULL)
