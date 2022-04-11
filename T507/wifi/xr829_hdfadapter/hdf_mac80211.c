@@ -446,7 +446,7 @@ int32_t WalSetMacAddr(NetDevice *netDev, uint8_t *mac, uint8_t len)
         HDF_LOGE("ADDR=%02x:%02x:%02x:%02x:%02x:%02x\n",
             mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
-        sprintf_s(addr_mac, ETH_ADDR_LEN, "%02x:%02x:%02x:%02x:%02x:%02x\n",
+        sprintf(addr_mac, "%02x:%02x:%02x:%02x:%02x:%02x\n",
 	    mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
         retVal = set_wifi_custom_mac_address(addr_mac, len);
 	} else {
