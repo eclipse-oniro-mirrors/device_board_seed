@@ -58,7 +58,8 @@ Note:If the text contains special characters, please escape them according to th
             <policy name="projectPolicy" desc="">
                 <!-- <policyitem type="copyright" name="Copyright (C) 2022 VYAGOO TECHNOLOGY Co., Ltd. All rights reserved" path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/> -->
                 <policyitem type="copyright" name="VYAGOO TECHNOLOGY Co., Ltd. All rights reserved" path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
-                 <policyitem type="copyright" name="VYAGOO TECHNOLOGY Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
+                <policyitem type="copyright" name="VYAGOO TECHNOLOGY Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
+                <policyitem type="copyright" name="HiHope Open Source Organization ." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
                 <policyitem type="license" name="EndUserLicenseAgreement" path=".*"  desc="License Header Invalid"/>
             </policy>
         </policylist>
@@ -82,7 +83,7 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.fex|*dts" desc="no copyriht heard"/>
             </filefilter>
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binaryFile" >
-                <filteritem type="filename" name="*.so|*.bin|*.bir|*.fex|*.bmp|*.sft|*.png" desc="all so file have check "/>
+                <filteritem type="filename" name="*.so|*.bin|*.bir|*.fex|*.bmp|*.sft|*.png|*.hap" desc="all so file have check "/>
             </filefilter>
         </filefilterlist>
     </oatconfig>
