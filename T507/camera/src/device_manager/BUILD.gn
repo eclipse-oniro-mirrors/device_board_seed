@@ -32,7 +32,7 @@ config("device_manager_config") {
 
 if (defined(ohos_lite)) {
   import("//build/lite/config/component/lite_component.gni")
-  import("//drivers/adapter/uhdf/uhdf.gni")
+  import("//drivers/hdf_core/adapter/uhdf/uhdf.gni")
 
   shared_library("camera_device_manager") {
     sources = [
@@ -63,8 +63,8 @@ if (defined(ohos_lite)) {
       "//utils/native/base/include",
       "$camera_device_name_path/camera/include/device_manager",
       "$camera_path/adapter/platform/mpp/src/device_manager/include",
-      "//drivers/framework/include/utils",
-      "//drivers/adapter/uhdf2/osal/include",
+      "//drivers/hdf_core/framework/include/utils",
+      "//drivers/hdf_core/adapter/uhdf2/osal/include",
       "$camera_device_name_path/camera/include/driver_adapter",
       "//base/hiviewdfx/hilog_lite/interfaces/native/innerkits",
     ]
@@ -82,7 +82,7 @@ if (defined(ohos_lite)) {
   }
 } else {
   import("//build/ohos.gni")
-  import("//drivers/adapter/uhdf2/uhdf.gni")
+  import("//drivers/hdf_core/adapter/uhdf2/uhdf.gni")
 
   ohos_shared_library("camera_device_manager") {
     sources = [
@@ -111,8 +111,8 @@ if (defined(ohos_lite)) {
       "//utils/native/base/include",
       "$camera_device_name_path/camera/include/device_manager",
       "$camera_path/adapter/platform/mpp/src/device_manager/include",
-      "//drivers/framework/include/utils",
-      "//drivers/adapter/uhdf2/osal/include",
+      "//drivers/hdf_core/framework/include/utils",
+      "//drivers/hdf_core/adapter/uhdf2/osal/include",
       "$camera_device_name_path/camera/include/driver_adapter",
       "//foundation/multimedia/camera_standard/frameworks/native/metadata/include",
     ]
